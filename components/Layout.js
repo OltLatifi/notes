@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Navbar from './Navbar'
 
 function Layout({children}) {
     return (
@@ -7,7 +6,7 @@ function Layout({children}) {
             <Head>
                 <title>Note app</title>
             </Head>
-            <Navbar/>
+            {children}
         </div>
     )
 }

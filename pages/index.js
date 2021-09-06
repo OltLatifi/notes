@@ -1,14 +1,25 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Note from '../components/Note'
 import styles from '../styles/Home.module.css'
-import Navbar from '../components/Navbar'
-import Layout from '../components/Layout'
 
-export default function Home() {
+export default function Home({notes}) {
   return (
-    <Layout>
-      <Navbar/>
-
-    </Layout>
+    <div className={styles.notes}>
+      <br/>
+      {notes.data.map((note) => {return <Note
+        key={note.id}
+        title={note.title}
+        description={note.description}/>
+        })}
+    </div>
   )
+}
+
+
+export const getStaticProps = async () =>{
+  const result = await fetch('http://localhost:3000/api/notes')
+  const notes = await result.json()
+
+  return{
+    props: {notes}
+  }
 }

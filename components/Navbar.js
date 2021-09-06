@@ -5,7 +5,7 @@ import {AppBar, Toolbar, Typography, Button} from '@material-ui/core'
 
 function Navbar() {
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor:'SeaGreen' }}>
         <Toolbar>
             <Typography variant="h6" className={styles.listItems}>
                 <Link href='/'>Note App</Link>
