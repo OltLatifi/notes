@@ -1,5 +1,6 @@
 .note{
     width: 20%;
+    min-width:200px;
     min-height: 200px;
     margin: 2%;
 

@@ -6,7 +6,8 @@ export default function Home({notes}) {
     <div className={styles.notes}>
       <br/>
       {notes.data.map((note) => {return <Note
-        key={note.id}
+        key={note._id}
+        id={note._id}
         title={note.title}
         description={note.description}/>
         })}
