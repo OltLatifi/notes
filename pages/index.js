@@ -1,7 +1,6 @@
 import Note from '../components/Note'
-import styles from '../styles/Home.module.css'
 import {useState} from 'react'
-
+import styles from '../styles/Note.module.css'
 export default function Home({notes}) {
  
 
