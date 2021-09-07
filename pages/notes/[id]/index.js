@@ -1,18 +1,26 @@
-// import styles from '../../../styles/Articles.module.css'
+import styles from '../../../styles/Note.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
+import {Card, CardContent, CardActions, Typography, Button} from '@material-ui/core'
+
 
 function Note({note}) {
     const router = useRouter();
 
     return (
-        <div>
-            <h1>{note.title}</h1>
-            <p>{note.description}</p>
-            <br/>
-            <Link href="/">Go back</Link>
+        <center>
+            <Card className={styles.bigCard}>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {note.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {note.description}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </center>
 
-        </div>
     )
 }
 // query: { id } -- gets the id from the router
