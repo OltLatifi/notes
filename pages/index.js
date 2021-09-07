@@ -1,7 +1,10 @@
 import Note from '../components/Note'
 import styles from '../styles/Home.module.css'
+import {useState} from 'react'
 
 export default function Home({notes}) {
+ 
+
   return (
     <div className={styles.notes}>
       <br/>

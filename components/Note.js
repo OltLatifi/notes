@@ -1,11 +1,15 @@
 import {Card, CardContent, CardActions, Typography, Button} from '@material-ui/core'
 import styles from '../styles/Note.module.css'
+import { useRouter } from 'next/router';
 import Link from 'next/link'
 import axios from 'axios'
 
 function Note(props) {
+    const router = useRouter();
+
     const deleteNote =()=>{
         axios.delete(`http://localhost:3000/api/notes/${props.id}`)
+        .then(router.replace(router.asPath))
     }
     return (
         <>
