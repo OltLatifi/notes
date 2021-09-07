@@ -8,7 +8,7 @@ function Note(props) {
     const router = useRouter();
 
     const deleteNote =()=>{
-        axios.delete(`http://localhost:3000/api/notes/${props.id}`)
+        axios.delete(`/api/notes/${props.id}`)
         .then(router.replace(router.asPath))
     }
     return (
