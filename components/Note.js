@@ -1,8 +1,12 @@
 import {Card, CardContent, CardActions, Typography, Button} from '@material-ui/core'
 import styles from '../styles/Note.module.css'
 import Link from 'next/link'
+import axios from 'axios'
 
 function Note(props) {
+    const deleteNote =()=>{
+        axios.delete(`http://localhost:3000/api/notes/${props.id}`)
+    }
     return (
         <>
         
@@ -21,7 +25,7 @@ function Note(props) {
                 <Button size="small" variant="contained" href={`/notes/${props.id}/edit`}>
                     Edit
                 </Button>
-                <Button size="small" variant="contained" style={{backgroundColor:'pink'}}>
+                <Button size="small" variant="contained" style={{backgroundColor:'pink'}} onClick={deleteNote}>
                     Delete
                 </Button>
             </CardActions>
