@@ -1,13 +1,12 @@
 import Note from '../components/Note'
-import {useState} from 'react'
 import styles from '../styles/Note.module.css'
-export default function Home({notes}) {
- 
+
+function Home({notes}) {
 
   return (
     <div className={styles.notes}>
       <br/>
-      {notes.data.map((note) => {return <Note
+      {notes.map((note) => {return <Note
         key={note._id}
         id={note._id}
         title={note.title}
@@ -17,12 +16,10 @@ export default function Home({notes}) {
   )
 }
 
-
-export const getStaticProps = async () =>{
-  const result = await fetch('http://localhost:3000/api/notes')
-  const notes = await result.json()
-
-  return{
-    props: {notes}
-  }
+Home.getInitialProps = async () => {
+  const res = await fetch('http://localhost:3000/api/notes')
+  const { data } = await res.json()
+  return { notes: data }
 }
+
+export default Home
