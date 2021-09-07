@@ -18,7 +18,7 @@ function Note(props) {
                 </CardContent>
             </Link>
             <CardActions >
-                <Button size="small" variant="contained">
+                <Button size="small" variant="contained" href={`/notes/${props.id}/edit`}>
                     Edit
                 </Button>
                 <Button size="small" variant="contained" style={{backgroundColor:'pink'}}>
