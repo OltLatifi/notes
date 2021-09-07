@@ -1,20 +1,19 @@
 import {TextField, Typography, Button, Card} from '@material-ui/core'
-import styles from '../../../styles/Form.module.css'
+import styles from '../styles/Form.module.css'
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 
-function EditForm({note}) {
+function Form() {
     const router = useRouter()
-    const[title, setTitle] = useState(note.title)
-    const[description, setDescription] = useState(note.description)
-    const {query: { id }} = router
+    const[title, setTitle] = useState('')
+    const[description, setDescription] = useState('')
 
     const buttonPressed = ()=>{
         // title is required
         if(title!==''){
-            axios.put(`/api/notes/${id}`, {
+            axios.post('/api/notes/', {
                 "title": title,
                 "description": description,
             })
@@ -28,12 +27,11 @@ function EditForm({note}) {
     return (
         <center>
             <Card  className={styles.form}>
-            <Typography variant="h5">Edit a note</Typography><br/>
+            <Typography variant="h5">Enter a note</Typography><br/>
             <form noValidate autoComplete="off" >
                 <TextField
                     id="standard-basic"
                     label="Title"
-                    value={title}
                     className={styles.input}
                     inputProps={{ maxLength: 40 }}
                     onChange={(e)=>{setTitle(e.target.value)}}/>
@@ -41,7 +39,6 @@ function EditForm({note}) {
                 <TextField
                     id="standard-multiline-static"
                     label="Description"
-                    value={description}
                     className={styles.input}
                     inputProps={{ maxLength: 200 }}
                     onChange={(e)=>{setDescription(e.target.value)}}
@@ -52,7 +49,7 @@ function EditForm({note}) {
                 <Button
                     variant="contained"
                     className={styles.input}
-                    onClick={buttonPressed}>Edit</Button>
+                    onClick={buttonPressed}>Submit</Button>
             </form>
             </Card>
         </center>
@@ -60,11 +57,4 @@ function EditForm({note}) {
     )
 }
 
-EditForm.getInitialProps = async ({ query: { id } }) => {
-    const res = await fetch(`http://localhost:3000/api/notes/${id}`);
-    const { data } = await res.json();
-
-    return { note: data }
-}
-
-export default EditForm
+export default Form
